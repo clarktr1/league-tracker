@@ -10,7 +10,7 @@ const ChampionPage = () => {
 
     async function getChampion(){
         try {
-            const response = await fetch(`http://ddragon.leagueoflegends.com/cdn/13.12.1/data/en_US/champion/${id}.json`)
+            const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/13.12.1/data/en_US/champion/${id}.json`)
             const data = await response.json()
             setChampInfo(data.data[id])
            
@@ -30,7 +30,7 @@ const ChampionPage = () => {
             <Container className="champion-container">
                 <Box className="champion-image-container">
                 <img
-                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg`}
+                src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg`}
                 alt={id}
                 width={1017}
                 height={517}

@@ -50,13 +50,13 @@ function App() {
                 backgroundColor: '#010A13',
               }}>
             <Switch >
-              <Route exact path="/">
+              <Route exact path="/league-tracker">
                 <Homepage />
               </Route>
-              <Route exact path="/champions">
+              <Route exact path="/league-tracker/champions">
                 <Championlist />
               </Route>
-              <Route exact path="/champions/:id">
+              <Route exact path="/league-tracker/champions/:id">
                 <ChampionPage />
               </Route>
             

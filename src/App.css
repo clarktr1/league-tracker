@@ -33,7 +33,7 @@ body{
 .title{
   display: inline;
   margin-left: .25em;
-  color: #C8AA6E;
+  color: #e2a222;
 }
 
 .navbar-item-container{
@@ -67,7 +67,16 @@ body{
  margin: 0 !important;
 }
 
-
+.champion-search{
+  border: 1px solid #C8AA6E;
+  color: #C8AA6E;
+  background-color: #091A29;
+  border-radius: 8px;
+  width:50%;
+  height: 1.5em;
+  margin-top: 2em;
+  padding: .8em .8em .8em 3em;
+}
 
 
 .champ-container{
