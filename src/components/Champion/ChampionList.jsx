@@ -8,17 +8,30 @@ const ChampionList = () => {
   const [searchChamp, setSearch] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
 
-  async function getChampionData() {
+ async function getChampionData() {
     try {
       const response = await fetch(
         'https://ddragon.leagueoflegends.com/cdn/13.12.1/data/en_US/champion.json'
       );
       const data = await response.json();
       setChampionList(data.data); 
+      testFree()
     } catch (error) {
       console.log(error);
     }
   }
+
+  function testFree(){
+    const id = 12
+    console.log(championList)
+    for(let champ in championList){
+        if(championList[champ].key == id) {
+          console.log(championList[champ])
+        }
+      }
+  }
+
+
 
   function testSearch() {
     if (searchChamp && championList) {

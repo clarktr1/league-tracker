@@ -8,6 +8,15 @@
   src: url('./fonts/Beaufort/BeaufortforLOL-Italic.otf');
 }
 
+html{
+  height: 100vh;
+  width: 100vw;
+  background-color: '#010A13';
+  cursor: url('./assets/normal.cur'), auto
+}
+
+
+
 body{
   color: rgba(255, 255, 255, 0.87);
   margin: 0;
@@ -16,6 +25,11 @@ body{
   overflow-x: hidden;
 }
 
+#background-video {
+ 
+  object-fit: cover;
+  z-index: 1
+}
 
 .navbar{
   background-color: #091A29;
@@ -54,6 +68,10 @@ body{
   color: #005A82;
 }
 
+a:hover, button:hover, select:hover{
+  cursor: url('./assets/link.cur'), auto;
+}
+
 .footer{
   background-color: #091A29;
   display: flex;
@@ -75,7 +93,20 @@ body{
   width:50%;
   height: 1.5em;
   margin-top: 2em;
-  padding: .8em .8em .8em 3em;
+  padding: 1em
+}
+
+.summoner-search .champion-search{
+  padding: 0 !important;
+}
+
+.btn{
+  margin-top: 1em;
+  padding: 1em;
+  color: #C8AA6E;
+  background-color: #091A29;
+  border-radius: 8px;
+  border: 1px solid #e2a222;
 }
 
 

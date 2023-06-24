@@ -5,6 +5,7 @@ import Homepage from './components/Homepage/Homepage'
 import Championlist from './components/Champion/ChampionList'
 import ChampionPage from './components/Champion/ChampionPage'
 import Footer from './components/Footer'
+import bgvideo from './assets/magic.mp4'
 import './App.css'
 
 
@@ -44,6 +45,9 @@ function App() {
     <>
       <Router>
           <NavBar />
+          {/* <video id='background-video' autoplay loop muted>
+            <source src={bgvideo} type='video/mp4'></source>
+          </video> */}
             <div
                 style={{
                 width: '100vw',

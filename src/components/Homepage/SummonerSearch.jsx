@@ -86,14 +86,19 @@ const SummonerSearch = () => {
 
   return (
     <Container>
-      <Box>
-        <select value={region} onChange={(event) => setRegion(event.target.value)}>
+      <Box id='summoner-search'style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', marginBottom:'4em ', width:'40vw'}}>
+        <select style={{  
+          color: '#C8AA6E',
+          backgroundColor: '#091A29',
+          borderRadius: '8px',
+          border: '1px solid #e2a222'
+          }} value={region} onChange={(event) => setRegion(event.target.value)}>
           <option value="NA1">NA 1</option>
           <option value="EUW1">EU West 1</option>
           <option value="EUN1">EU North 1</option>
         </select>
-        <input onChange={(event) => setSummoner(event.target.value)} />
-        <button onClick={fetchSummonerData}>Click Here to Get Account Data</button>
+        <input placeholder='Summoner Name' className='champion-search' onChange={(event) => setSummoner(event.target.value)} />
+        <button className='btn' onClick={fetchSummonerData}>Search</button>
         {name ? (
           <div className="card">
             <p>Name: {name}</p>
