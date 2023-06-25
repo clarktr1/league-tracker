@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Grid, Card, CardMedia, Typography, Box, Icon } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
+
 const ChampionList = () => {
   const [championList, setChampionList] = useState(null);
   const [searchChamp, setSearch] = useState(null);
@@ -15,46 +16,30 @@ const ChampionList = () => {
       );
       const data = await response.json();
       setChampionList(data.data); 
-      testFree()
+      champSearch();
     } catch (error) {
       console.log(error);
     }
   }
 
-  function testFree(){
-    const id = 12
-    console.log(championList)
-    for(let champ in championList){
-        if(championList[champ].key == id) {
-          console.log(championList[champ])
-        }
-      }
-  }
-
-
-
-  function testSearch() {
+  function champSearch() {
     if (searchChamp && championList) {
       const formattedSearchChamp = searchChamp.toLowerCase();
       const filteredChampions = Object.keys(championList).filter(champ =>
         champ.toLowerCase().includes(formattedSearchChamp)
       );
       setSearchResults(filteredChampions.map(champ => championList[champ].id));
-
-      console.log(filteredChampions)
-      // console.log(filteredChampions)
     } else {
       setSearchResults([]);
     }
   }
 
-  useEffect(() => {
-    testSearch();
-  }, [searchChamp, championList]);
+  // useEffect(() => {
+  //   champSearch();
+  // }, [searchChamp, championList]);
 
   useEffect(() => {
     getChampionData();
-
   }, []);
   return (
     <>

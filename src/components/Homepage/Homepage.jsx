@@ -5,13 +5,13 @@ import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import yasuo from '../../assets/chibi_yas.png'
 
 const api = import.meta.env.VITE_API_KEY
-console.log(api)
+
 
 const Homepage = () => {
     const [championList, setChampionList] = useState({});
     const [champRotation, setRotation] = useState([]);
     const [champData, setData] = useState([]);
-    const access_key = 'RGAPI-346a9ab8-69a8-4f06-aacd-5e628207d037';
+   
 
     async function getChampionData() {
         try {
