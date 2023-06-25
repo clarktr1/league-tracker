@@ -51,6 +51,7 @@ function App() {
             <div
                 style={{
                 width: '100vw',
+                minHeight:'100vh',
                 backgroundColor: '#010A13',
               }}>
             <Switch >

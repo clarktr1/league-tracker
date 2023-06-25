@@ -4,6 +4,9 @@ import SummonerSearch from "./SummonerSearch";
 import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import yasuo from '../../assets/chibi_yas.png'
 
+const api = import.meta.env.VITE_API_KEY
+console.log(api)
+
 const Homepage = () => {
     const [championList, setChampionList] = useState({});
     const [champRotation, setRotation] = useState([]);
@@ -24,7 +27,7 @@ const Homepage = () => {
       }
 
     async function getRotation(){
-        const response = await fetch(`https://na1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${access_key}`)
+        const response = await fetch(`https://na1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${api}`)
         const data = await response.json()
         setRotation(data.freeChampionIds)
         handleRotation()

@@ -68,7 +68,7 @@ body{
   color: #005A82;
 }
 
-a:hover, button:hover, select:hover{
+a:hover, button:hover, select:hover, option:hover{
   cursor: url('./assets/link.cur'), auto;
 }
 
@@ -101,12 +101,15 @@ a:hover, button:hover, select:hover{
 }
 
 .btn{
-  margin-top: 1em;
-  padding: 1em;
-  color: #C8AA6E;
-  background-color: #091A29;
+  margin-top: 1em !important;
+  color: #C8AA6E !important;
+  background-color: #091A29 !important;
   border-radius: 8px;
-  border: 1px solid #e2a222;
+  border: 1px solid #e2a222 !important;
+}
+
+.btn:hover{
+  background-color: #005A82 !important;
 }
 
 
