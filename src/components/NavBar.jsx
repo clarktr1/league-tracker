@@ -14,7 +14,7 @@ const NavBar = () => {
                 className="navbar-logo-container">
                 <Link
                 style={{textDecoration:'none'}}
-                to="/league-tracker">
+                to="/league-tracker/">
                     <img width={'50px'} src={icon}></img>
                     <h2 className="title">eague Tracker</h2>
                 </Link>

@@ -142,7 +142,7 @@ a:hover, button:hover, select:hover, option:hover{
   padding-top: 1em;
   transform: scale(1.15);
   transition: transform .5s;
-  border: 1px solid #010A13 ;
+
 
 }
 
@@ -160,8 +160,9 @@ a:hover, button:hover, select:hover, option:hover{
 
 
 
-
-
+.participants:hover{
+  color: #005a82 !important;
+}
 
 
 /* .plate-name{
@@ -202,7 +203,7 @@ a:hover, button:hover, select:hover, option:hover{
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(10, 20, 40, 0.071) 20%, #010A13 80%);
+    background: linear-gradient(to bottom, rgba(10, 20, 40, 0.071) 0%, #010A13 63%);
     pointer-events: none;}
 
 .champion-title{

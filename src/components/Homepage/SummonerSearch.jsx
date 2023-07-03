@@ -5,12 +5,8 @@ import MatchBox from '../Summoner/MatchBox'
 
 
 const SummonerSearch = () => {
-  const [name, setName] = useState(null)
+  const [name, setName] = useState('')
   const [region, setRegion] = useState('NA1')
-
-function showState(){
-  console.log(region + name)
-}
  
   
 
@@ -24,9 +20,9 @@ function showState(){
             borderRadius: '8px',
             border: '1px solid #e2a222'
             }} value={region} onChange={(event) => setRegion(event.target.value)}>
-            <option value="NA1">NA 1</option>
-            <option value="EUW1">EU West 1</option>
-            <option value="EUN1">EU North 1</option>
+            <option value="na1">NA 1</option>
+            <option value="euw1">EU West 1</option>
+            <option value="eun1">EU North 1</option>
           </select>
           <input placeholder='Summoner Name' className='champion-search' onChange={(event) => setName(event.target.value)} />
           <Button variant='contained' className='btn'>
