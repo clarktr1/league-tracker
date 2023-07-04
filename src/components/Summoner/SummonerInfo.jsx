@@ -133,7 +133,7 @@ async function fetchMatchID(puuid) {
                               <img
                                 src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/item/${self[`item${index}`]}.png`}
                                 alt={self[`item${index}`]}
-                                width={36}
+                                width={38}
                               />
                             ) : null}
                           </Grid>
