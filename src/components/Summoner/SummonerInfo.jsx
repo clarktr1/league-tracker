@@ -95,12 +95,6 @@ async function fetchMatchID(puuid) {
     
   }, [id])
 
-  useEffect(() => {
-    if (pid) {
-      fetchMatchData(selfData);
-    }
-  }, [pid]);
-
   return (
        <Box style={{display:'flex', flexDirection:'column', justifyContent:'center', width:'100dvw'}}>
         {allMatch ? (
