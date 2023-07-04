@@ -6,7 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const ChampionList = () => {
   const [championList, setChampionList] = useState(null);
-  const [searchChamp, setSearch] = useState(null);
+  const [searchChamp, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
  async function getChampionData() {
@@ -16,7 +16,7 @@ const ChampionList = () => {
       );
       const data = await response.json();
       setChampionList(data.data); 
-      champSearch();
+   
     } catch (error) {
       console.log(error);
     }
@@ -34,13 +34,14 @@ const ChampionList = () => {
     }
   }
 
-  // useEffect(() => {
-  //   champSearch();
-  // }, [searchChamp, championList]);
+  useEffect(() => {
+    champSearch();
+  }, [searchChamp, searchResults]);
 
   useEffect(() => {
     getChampionData();
-  }, []);
+  }, [championList]);
+
   return (
     <>
     <Box style={{textAlign:'center', fontFamily:'Beaufort', width: '50vw', margin:'0 auto' }}>
@@ -49,7 +50,7 @@ const ChampionList = () => {
       <Box>
       <SearchIcon 
       style={{position:'relative', left:'30px', top:'8px'}}/>
-      <input className="champion-search" onChange={(e) => {setSearch(e.target.value);}}></input>
+      <input className="champion-search" style={{paddingLeft:'3em'}} onChange={(e) => {setSearch(e.target.value);}}></input>
       </Box>
     </Box>
     <Grid container spacing={0} rowGap={6} sx={{margin:'0 auto', padding:'3em 0'}} id='champ-grid'>
