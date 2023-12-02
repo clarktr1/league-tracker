@@ -34,7 +34,6 @@ const Homepage = () => {
     };
 
     async function handleRotation() {
-
         const champData = [];
 
         champRotation.forEach((id) => {
@@ -45,9 +44,15 @@ const Homepage = () => {
           });
         setData(champData)
       }
+
+
+    
+
+    
       
     useEffect(() => {
         getChampionData()
+    
     }, []);
 
     useEffect(() =>{
@@ -75,7 +80,8 @@ const Homepage = () => {
                 return(
                     <Grid item xs={2} key={champ}>
                     <Link
-                    to={`/league-tracker/champions/${champData[champ].id}`} rel="noopener noreferrer" underline="none">
+                  
+                    to={`/champions/${champData[champ].id}`} rel="noopener noreferrer" underline="none">
                         <img
                         src={`http://ddragon.leagueoflegends.com/cdn/13.12.1/img/champion/${champData[champ].id}.png`}
                         width={60}
@@ -89,4 +95,4 @@ const Homepage = () => {
     )
 };
 
-export default Homepage
+export default Homepage;

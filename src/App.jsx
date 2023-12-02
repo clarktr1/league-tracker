@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Homepage from './components/Homepage/Homepage'
@@ -26,16 +25,16 @@ function App() {
                 backgroundColor: '#010A13',
               }}>
             <Switch >
-              <Route exact path="/league-tracker/">
+              <Route exact path="/">
                 <Homepage />
               </Route>
-              <Route exact path="/league-tracker/champions">
+              <Route exact path="/champions">
                 <Championlist />
               </Route>
-              <Route exact path="/league-tracker/champions/:id">
+              <Route exact path="/champions/:id">
                 <ChampionPage />
               </Route>
-              <Route path='/league-tracker/:region/:id'>
+              <Route path='/summoner/:region/:id'>
                 <SummonerInfo />
               </Route>
             </Switch>

@@ -220,6 +220,27 @@ a:hover, button:hover, select:hover, option:hover{
 width: 30% !important;
 }
 
+/* WebKit Scrollbar */
+::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c8aa6e; /* Color of the scrollbar thumb */
+  border-radius: 6px; /* Round corners of the thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #010A13; /* Color of the scrollbar track */
+}
+
+/* Optional: Handle when the scrollbar is in a hover state */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a1854f; /* Adjust color on hover */
+}
+
+
 @keyframes subtitleAnimation {
   0% {
     transform: translateX(0);
@@ -229,4 +250,6 @@ width: 30% !important;
     transform: translateX(8%);
     opacity: 1;
   }
+
+  
 }

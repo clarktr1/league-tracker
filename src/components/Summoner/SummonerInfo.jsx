@@ -8,7 +8,7 @@ const SummonerInfo = () => {
   const history = useHistory(); 
   
 const handleParticipantLinkClick = (summonerName) => {
-  history.push(`/league-tracker/${region}/${summonerName}`);
+  history.push(`/summoner/${region}/${summonerName}`);
 };
 
 
@@ -21,6 +21,7 @@ const handleParticipantLinkClick = (summonerName) => {
   const [selfData, setSelfData] = useState([])
   const [pid, setPID] = useState()
   const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState({})
  
 
 
@@ -33,7 +34,6 @@ async function fetchSummonerData() {
       );
       if (response.ok) {
         const summonerData = await response.json();
-        console.log(summonerData)
         const { name, summonerLevel, profileIconId, puuid } = summonerData;
         setName(name);
         setLevel(summonerLevel);
@@ -78,7 +78,6 @@ async function fetchMatchID(puuid) {
         matchArr.push(matchData.info)
         setMatch(matchArr)
         setLoading(false);
-        console.log(matchArr)
       }
       
     } catch (error) {
@@ -86,8 +85,25 @@ async function fetchMatchID(puuid) {
       setLoading(false);
     }
   }
+
+  async function fetchItemData(){
+    try {
+      const response = await fetch('http://ddragon.leagueoflegends.com/cdn/13.13.1/data/en_US/item.json')
+      if (response.ok){
+        const data = await response.json()
+        setItems(data.data)
+        
   
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
   
+  useEffect(() => {
+    fetchItemData()
+    console.log(items)
+  }, [])
 
   useEffect(() => {
     setLoading(true); 
@@ -101,14 +117,30 @@ async function fetchMatchID(puuid) {
     }
   }, [pid]);
 
+  const [showDialog, setShowDialog] = useState(false);
+  const [dialogItem, setDialogItem] = useState(null);
+
+  const handleMouseEnter = (index) => {
+    setShowDialog(true);
+    setDialogItem(items[self[`item${index}`]]);
+  };
+
+  const handleMouseLeave = () => {
+    setShowDialog(false);
+    setDialogItem(null);
+  };
+
+
   return (
        <Box style={{display:'flex', flexDirection:'column', justifyContent:'center', width:'100dvw'}}>
         {allMatch ? (
           allMatch.map((game) => {
             const participants = game.participants;
             const self = participants.find((p) => p.puuid === pid);
+            
     
             if (self) {
+          
               return (
                 <Card key={Math.random()} style={{ maxWidth: '50dvw', background:'#091428', padding:'2em', margin:'0 auto'}}>
                   <Grid container spacing={2}>
@@ -130,17 +162,42 @@ async function fetchMatchID(puuid) {
                         {Array.from(Array(6), (_, index) => (
                           <Grid item xs={4} key={index}>
                             {self[`item${index}`] ? (
-                              <img
-                                src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/item/${self[`item${index}`]}.png`}
-                                alt={self[`item${index}`]}
-                                width={38}
-                              />
+                              <div
+                                onMouseEnter={() => handleMouseEnter(index)}
+                                onMouseLeave={handleMouseLeave}
+                                style={{ position: 'relative' }}
+                              >
+                                <img
+                                  src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/item/${self[`item${index}`]}.png`}
+                                  alt={self[`item${index}`]}
+                                  width={38}
+                                />
+                                {items[self[`item${index}`]] && items[self[`item${index}`]].name ? (
+                                  <p style={{ color: 'white', fontSize: '12px' }}>{items[self[`item${index}`]].name}</p>
+                                ) : null}
+                                {showDialog && dialogItem && (
+                                  <div
+                                    style={{
+                                      position: 'absolute',
+                                      top: '100%',
+                                      left: '50%',
+                                      transform: 'translate(-50%, 0)',
+                                      background: 'black',
+                                      color: 'white',
+                                      padding: '4px',
+                                    }}
+                                  >
+                                    <p>{dialogItem.name}</p>
+                                    <p>{dialogItem.plaintext}</p>
+                                  </div>
+                                )}
+                              </div>
                             ) : null}
                           </Grid>
                         ))}
                       </Grid>
                     </Grid>
-    
+                        
                     <Grid item xs={6}>
                       <Grid container columnSpacing={4} spacing={1} sx={{ textAlign: 'left' }}>
                         {participants.map((participant, index) => (
@@ -157,7 +214,7 @@ async function fetchMatchID(puuid) {
                             ) : (
                             <Link
                               className='participants'
-                              to={`/league-tracker/${region}/${participant.summonerName}`}
+                              to={`/summoner/${region}/${participant.summonerName}`}
                               style={{ fontSize: '.9em', color: '#fff', textDecoration: 'none' }}
                               onClick={() => handleParticipantLinkClick(participant.summonerName)}
                             >

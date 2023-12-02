@@ -9,7 +9,7 @@ const Footer = () => {
     return(
         <Box className='footer'>
             <img src={logo} width={100}></img>
-            <p>This is a personal project and is no way associated with Riot Game or League of Legends. </p>
+            <p>This is a personal project and is no way associated with Riot Games or League of Legends. All assets are property of Riot Games or League of Legends and are used solely for the purpose to proof of concept.</p>
         </Box>
     )
 }

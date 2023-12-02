@@ -7,6 +7,7 @@ import ChampionSkill from "./ChampionSkill"
 const ChampionPage = () => {
     const [champInfo, setChampInfo] = useState({})
     const { id } = useParams()
+
     console.log(champInfo)
 
     async function getChampion(){
@@ -29,7 +30,7 @@ const ChampionPage = () => {
    
             <Container className="champion-container">
                 <ChampionHero champ={champInfo}/>
-                <ChampionSkill spells={champInfo} id={id}/>
+                <ChampionSkill spells={champInfo}/>
             </Container>
     )   
 }

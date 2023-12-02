@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Box, Container, Grid, Button } from '@mui/material'
 import { Link } from 'react-router-dom'
-import MatchBox from '../Summoner/MatchBox'
 
 
 const SummonerSearch = () => {
@@ -26,7 +25,7 @@ const SummonerSearch = () => {
           </select>
           <input placeholder='Summoner Name' className='champion-search' onChange={(event) => setName(event.target.value)} />
           <Button variant='contained' className='btn'>
-              <Link to={`/league-tracker/${region}/${name}`} style={{textDecoration:'none', color:'#e2a222'}}>Search</Link>
+              <Link to={`/summoner/${region}/${name}`} style={{textDecoration:'none', color:'#e2a222'}}>Search</Link>
           </Button>
       
         </form>

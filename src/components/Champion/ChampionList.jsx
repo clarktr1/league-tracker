@@ -88,7 +88,7 @@ const ChampionList = () => {
     championList && Object.keys(championList).map((champion) => (
       <Grid item xs={12} sm={6} md={4} lg={3} key={championList[champion].id} className='champ-container'>
         <Card className='champion-card' sx={{ width: '192px', height: '282px', position: 'relative', overflow: 'hidden' }}>
-          <Link to={`/league-tracker/champions/${championList[champion].id}`} rel="noopener noreferrer" underline="none">
+          <Link to={`/champions/${championList[champion].id}`} rel="noopener noreferrer" underline="none">
             <div
               className="image-container"
               style={{
