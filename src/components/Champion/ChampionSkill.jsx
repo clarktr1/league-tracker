@@ -7,13 +7,13 @@ import { useState, useEffect, useRef } from 'react';
 // display: none and display: block will work in the same way
 // just without a transition
 const videoStyle = {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    opacity: 0,
-    transition: 'opacity 0.6s ease-in-out',
+	position: 'absolute',
+	top: 0,
+	left: 0,
+	width: '100%',
+	height: '100%',
+	opacity: 0,
+	transition: 'opacity 0.6s ease-in-out',
 };
 
 const Description = ({ skill, skillL }) => {
@@ -224,7 +224,7 @@ const ChampionSkill = ({ spells: { passive, spells, key, name } }) => {
 								)}/ability_${formatID(key)}_${letter}1.webm`}
 								style={{
 									...videoStyle,
-                                    // this is whereyou would change the opacity to display if you dont want the transition
+									// this is where you would change the opacity to display if you dont want the transition
 									opacity: selectedSkillLetter === letter ? 1 : 0,
 								}}
 							></video>
