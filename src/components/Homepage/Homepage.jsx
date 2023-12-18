@@ -20,6 +20,7 @@ const Homepage = () => {
           );
           const data = await response.json();
           setChampionList(data.data); 
+          getRotation();
  
         } catch (error) {
           console.log(error);
@@ -46,17 +47,8 @@ const Homepage = () => {
       }
 
 
-    
-
-    
-      
-    useEffect(() => {
-        getChampionData()
-    
-    }, []);
-
     useEffect(() =>{
-        getRotation()
+      getChampionData()
     },[champData])
 
 
@@ -78,14 +70,25 @@ const Homepage = () => {
             style={{margin:'0 auto', padding:'4em'}}>
             {champData && Object.keys(champData).map((champ) => {
                 return(
-                    <Grid item xs={2} key={champ}>
+                    <Grid item xs={2.3} key={champ}>
                     <Link
                   
                     to={`/champions/${champData[champ].id}`} rel="noopener noreferrer" underline="none">
-                        <img
-                        src={`http://ddragon.leagueoflegends.com/cdn/13.12.1/img/champion/${champData[champ].id}.png`}
-                        width={60}
-                        ></img>
+                    <img
+                    src={`http://ddragon.leagueoflegends.com/cdn/13.12.1/img/champion/${champData[champ].id}.png`}
+                    width={60}
+                    style={{
+                        border: '1px solid #C8AA6E',
+                        display: 'block',
+                        margin: '0 auto',
+                        transition: 'transform 0.3s', // Add a smooth transition
+                        '&:hover': {
+                            transform: 'scale(1.2)',
+                        },
+                    }}
+                    alt={champData[champ].name}
+                    />
+
                     </Link>
                     </Grid>
                 )

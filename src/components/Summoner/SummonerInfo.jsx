@@ -1,6 +1,7 @@
 import {useParams, Link, useHistory} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Typography, Box, Container, Card, Grid, Button } from '@mui/material'
+import SummonerHead from './SummonerHead';
 
 
 const SummonerInfo = () => {
@@ -22,7 +23,7 @@ const handleParticipantLinkClick = (summonerName) => {
   const [pid, setPID] = useState()
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState({})
- 
+  const [self, setSelf] = useState({})
 
 
 
@@ -35,6 +36,7 @@ async function fetchSummonerData() {
       if (response.ok) {
         const summonerData = await response.json();
         const { name, summonerLevel, profileIconId, puuid } = summonerData;
+        setSelf(summonerData);
         setName(name);
         setLevel(summonerLevel);
         setIcon(`http://ddragon.leagueoflegends.com/cdn/11.20.1/img/profileicon/${profileIconId}.png`);
@@ -131,8 +133,15 @@ async function fetchMatchID(puuid) {
   };
 
 
+
+  // return(
+  //   <>
+  //     <SummonerHead self={self} icon={icon}/> 
+  //   </>
+  //)
   return (
        <Box style={{display:'flex', flexDirection:'column', justifyContent:'center', width:'100dvw'}}>
+         <SummonerHead self={self} icon={icon}/> 
         {allMatch ? (
           allMatch.map((game) => {
             const participants = game.participants;
@@ -154,7 +163,7 @@ async function fetchMatchID(puuid) {
                       </Link>
                       <Typography style={{color:'#aaa'}}>{game.gameMode}</Typography>
                       <Typography style={{color:'#fff'}}>K/D/A: <span style={{color:'#C89B3C'}}>{self.kills}/{self.deaths}/{self.assists}</span></Typography>
-                      {self.win === true ? <Typography style={{color:'#0397AB'}}>Win</Typography> : <Typography style={{color:'red'}}>Lose</Typography>}
+                      {self.win === true ? <Typography style={{color:'#0397AB'}}>Win</Typography> : <Typography style={{color:'red'}}>Loss</Typography>}
                     </Grid>
     
                     <Grid item xs={4}>

@@ -14,7 +14,7 @@ const NavBar = () => {
                 className="navbar-logo-container">
                 <Link
                 style={{textDecoration:'none'}}
-                to="/">
+                to="/home">
                     <img width={'50px'} src={icon}></img>
                     <h2 className="title">eague Tracker</h2>
                 </Link>
@@ -23,7 +23,14 @@ const NavBar = () => {
             <Grid item xs={5}>
                 <Box 
                 className="navbar-item-container"
+                >   
+                 <Link
+                className="navbar-item"
+                to={'/'}
+                sx={{ my: 2, color: '#C8AA6E', display: 'block' }}
                 >
+                    Home
+                </Link>
                     {pages.map((page) => {
                         return(
                             <Link

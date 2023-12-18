@@ -114,8 +114,7 @@ a:hover, button:hover, select:hover, option:hover{
 
 
 .champ-container{
-  padding-left: 4em;
-  padding-top: 4em;
+  padding: 2rem;
 }
 
 .champion-card::after{

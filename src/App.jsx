@@ -20,9 +20,10 @@ function App() {
           </video> */}
             <div
                 style={{
-                width: '100vw',
-                minHeight:'100vh',
+                minwidth: '100dvw',
+                minHeight:'100dvh',
                 backgroundColor: '#010A13',
+                paddingTop: '.1rem'
               }}>
             <Switch >
               <Route exact path="/">

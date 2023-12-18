@@ -7,14 +7,15 @@ import { useState, useEffect, useRef } from 'react';
 // display: none and display: block will work in the same way
 // just without a transition
 const videoStyle = {
-	position: 'absolute',
-	top: 0,
-	left: 0,
-	width: '100%',
-	height: '100%',
-	opacity: 0,
-	transition: 'opacity 0.6s ease-in-out',
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  opacity: 0,
+  transition: 'opacity 0.5s ease-in-out', // Adjust the duration and easing as needed
 };
+
 
 const Description = ({ skill, skillL }) => {
 	return (
@@ -65,6 +66,7 @@ const ChampionSkill = ({ spells: { passive, spells, key, name } }) => {
 	const [selectedSkillLetter, setSelectedSkillLetter] = useState('P');
 	// useRef to store the video elements
 	const videoRefs = useRef({});
+	
 
 	// useEffect to autoplay the passive video on load
 	useEffect(() => {
@@ -74,7 +76,6 @@ const ChampionSkill = ({ spells: { passive, spells, key, name } }) => {
 			console.log('waiting for key');
 			return;
 		}
-
 		// default to passive
 		setSelectedSkillLetter('P');
 		// autoplay the passive video
@@ -91,21 +92,40 @@ const ChampionSkill = ({ spells: { passive, spells, key, name } }) => {
 
 	// makes sure the video on plays when the video is displayed and pauses when it is not
 	const playVideo = (skillLetter) => {
+		const videosToPause = [];
+	  
 		Object.keys(videoRefs.current).forEach((letter) => {
-			const video = videoRefs.current[letter];
-			if (letter === skillLetter) {
-				// checkis if the video can be played
-				if (video.readyState >= 3) {
-					video.play().catch((e) => console.error('cant play video', e));
-				} else {
-					video.addEventListener('canplay', () => video.play(), { once: true });
-				}
-			} else {
-				video.pause();
-				video.currentTime = 0;
+		  const video = videoRefs.current[letter];
+		  if (letter === skillLetter) {
+			// check if the video is not already playing
+			if (video.currentTime === 0 || video.paused) {
+			  // check if the video can be played
+			  if (video.readyState >= 3) {
+				video.play().catch((e) => console.error('cant play video', e));
+				video.style.opacity = 1;
+			  } else {
+				video.addEventListener('canplay', () => {
+				  video.play();
+				  video.style.opacity = 1;
+				}, { once: true });
+			  }
 			}
+		  } else {
+			videosToPause.push(video);
+		  }
 		});
-	};
+	  
+		// Delay pausing non-selected videos until after the transition
+		setTimeout(() => {
+		  videosToPause.forEach((video) => {
+			video.style.opacity = 0;
+			video.pause();
+			video.currentTime = 0;
+		  });
+		}, 500); // Adjust the timeout duration to match your transition duration
+	  };
+	  
+	  
 
 	// formats the id to be 4 digits long
 	const formatID = (id) => {
@@ -132,14 +152,15 @@ const ChampionSkill = ({ spells: { passive, spells, key, name } }) => {
 	}
 
 	return (
-		<Box
-			style={{
-				display: 'flex',
-				justifyContent: 'center',
-				flexDirection: 'column',
-				width: '80vw',
-			}}
-		>
+		   <Box
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center', // Center horizontally
+        justifyContent: 'center', // Center vertically
+        minHeight: '100vh', // Make the container at least the height of the viewport
+      }}
+    >
 			<Typography
 				style={{
 					marginBottom: 20,
@@ -151,7 +172,7 @@ const ChampionSkill = ({ spells: { passive, spells, key, name } }) => {
 				Skills
 			</Typography>
 			<Container style={{ display: 'flex' }}>
-				<Container style={{ width: '50%', margin: 0 }}>
+				<Container style={{ width: '50%', minHeight: '60dvh', margin: 0 }}>
 					<Container
 						style={{
 							display: 'flex',
