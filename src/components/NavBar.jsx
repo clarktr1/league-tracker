@@ -14,7 +14,7 @@ const NavBar = () => {
                 className="navbar-logo-container">
                 <Link
                 style={{textDecoration:'none'}}
-                to="/home">
+                to="/league-tracker">
                     <img width={'50px'} src={icon}></img>
                     <h2 className="title">eague Tracker</h2>
                 </Link>
@@ -26,7 +26,7 @@ const NavBar = () => {
                 >   
                  <Link
                 className="navbar-item"
-                to={'/'}
+                to={'/league-tracker'}
                 sx={{ my: 2, color: '#C8AA6E', display: 'block' }}
                 >
                     Home
@@ -36,7 +36,7 @@ const NavBar = () => {
                             <Link
                             key={page}
                             className="navbar-item"
-                            to={'/' + page.toLowerCase()}
+                            to={'/' +  page.toLowerCase()}
                             sx={{ my: 2, color: '#C8AA6E', display: 'block' }}
                             >
                                 {page}

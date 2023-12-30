@@ -23,7 +23,7 @@ const SummonerSearch = () => {
             <option value="euw1">EU West 1</option>
             <option value="eun1">EU North 1</option>
           </select>
-          <input placeholder='Version 12/17' className='champion-search' onChange={(event) => setName(event.target.value)} />
+          <input placeholder='Version 12/29' className='champion-search' onChange={(event) => setName(event.target.value)} />
           <Button variant='contained' className='btn'>
               <Link to={`/summoner/${region}/${name}`} style={{textDecoration:'none', color:'#e2a222'}}>Search</Link>
           </Button>
