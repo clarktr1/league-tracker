@@ -50,7 +50,7 @@ https://clarktr1.github.io/league-tracker
 ## Screenshots
 
 ![home](https://imgur.com/jH9xfo7.jpeg);
-![all champions](https://imgur.com/TZpBT4s.jpeg)
+![all champions](https://imgur.com/2dRRRiK.jpeg)
 ![one champion](https://imgur.com/AJDCp7l.jpeg)
 
 ## Usage
