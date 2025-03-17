@@ -5,7 +5,7 @@ import icon from "../assets/gold_icon.png"
 
 const NavBar = () => {
 
-    const pages = ['Champions', 'Summoner', 'Leaderboard']
+    const pages = ['Champions']
 
     return (
         <Grid className="navbar" container spacing={5}>
