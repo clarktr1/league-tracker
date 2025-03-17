@@ -253,19 +253,6 @@ const ChampionSkill = ({ spells: { passive, spells, key, name } }) => {
 					</div>
 				</Container>
 			</Container>
-			<Container style={{ marginTop: '6em' }}>
-				<Typography
-					style={{
-						marginBottom: 20,
-						color: '#C8AA6E',
-						fontFamily: 'Beaufort',
-						fontSize: '1.8em',
-					}}
-				>
-					Builds
-				</Typography>
-				<Typography>Builds coming soon!</Typography>
-			</Container>
 		</Box>
 	);
 };
