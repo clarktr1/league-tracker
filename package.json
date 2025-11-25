@@ -11,7 +11,7 @@
     "react-router-dom": "^5.3.4"
   },
   "scripts": {
-    "develop": "vite",
+    "dev": "vite",
     "deploy": "gh-pages -d dist",
     "build": "vite build --base=./ ",
     "preview": "vite preview"

@@ -3,7 +3,7 @@
 This project utilizes Riot Games' API to retrieve information about League of Legends champions and summoners. It provides functionalities to fetch free champions, display detailed information about each champion and their skills, and retrieve summoner data including match history and level. The project is built using Vite, a fast build tool for modern web development.
 
 ## Deployment
-https://clarktr1.github.io/league-tracker
+https://leaguetracker.netlify.app/
 
 ## Features
 
