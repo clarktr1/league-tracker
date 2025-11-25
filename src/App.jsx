@@ -26,7 +26,7 @@ function App() {
                 paddingTop: '.1rem'
               }}>
             <Switch >
-              <Route exact path="/league-tracker">
+              <Route exact path="/">
                 <Homepage />
               </Route>
               <Route exact path="/champions">
